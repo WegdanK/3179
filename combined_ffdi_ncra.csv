@@ -1,0 +1,55 @@
+abbrevs,region,names,ffdi_Median_mean_gwl2,ffdi_Median_p10_gwl2,ffdi_Median_p50_gwl2,ffdi_Median_p90_gwl2,ffdi_Median_std_gwl2,source_file,ffdi_Median_mean_gwl3,ffdi_Median_p10_gwl3,ffdi_Median_p50_gwl3,ffdi_Median_p90_gwl3,ffdi_Median_std_gwl3,ffdi_Median_mean_gwl15,ffdi_Median_p10_gwl15,ffdi_Median_p50_gwl15,ffdi_Median_p90_gwl15,ffdi_Median_std_gwl15
+NSW,2,New South Wales and Australian Capital Territory,7.578,0.0,7.775,16.95,6.374,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+NT,6,Northern Territory,21.09,3.125,21.125,34.55,10.741,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+QLDNorth,7,Queensland North,6.294,0.0,4.3,16.05,6.758,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+QLDSouth,8,Queensland South,14.733,0.3,17.175,30.425,11.061,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+SA,4,South Australia,20.36,7.325,22.125,28.3,7.774,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+TAS,5,Tasmania,0.0,0.0,0.0,0.0,0.019,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+VIC,3,Victoria,2.782,0.0,1.325,8.099,3.01,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+WANorth,0,Western Australia North,34.332,9.875,37.775,46.925,12.917,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+WASouth,1,Western Australia South,23.902,6.625,23.9,40.775,12.122,ffdi_ndays_exceeding_50_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+NSW,2,New South Wales and Australian Capital Territory,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,12.69,0.325,13.075,26.5,9.396,,,,,
+NT,6,Northern Territory,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,29.484,9.375,33.825,44.4,14.061,,,,,
+QLDNorth,7,Queensland North,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,11.854,0.025,8.525,26.225,10.213,,,,,
+QLDSouth,8,Queensland South,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,22.104,1.4,25.475,39.95,14.184,,,,,
+SA,4,South Australia,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,28.674,11.9,30.825,40.0,11.096,,,,,
+TAS,5,Tasmania,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,0.004,0.0,0.0,0.0,0.025,,,,,
+VIC,3,Victoria,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,4.046,0.025,2.7,11.775,4.281,,,,,
+WANorth,0,Western Australia North,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,41.323,13.775,45.45,55.8,13.901,,,,,
+WASouth,1,Western Australia South,,,,,,ffdi_ndays_exceeding_50_allstats_gwl3_abschangeGWL12_ncra_reg.csv,31.736,10.225,33.425,48.3,13.912,,,,,
+NSW,2,New South Wales and Australian Capital Territory,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,5.476,0.05,5.375,11.9,4.531
+NT,6,Northern Territory,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,15.898,2.875,16.575,27.7,9.014
+QLDNorth,7,Queensland North,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,4.277,0.0,2.8,10.95,4.704
+QLDSouth,8,Queensland South,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,12.129,0.425,10.45,25.25,9.366
+SA,4,South Australia,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,15.952,5.575,17.475,22.35,6.382
+TAS,5,Tasmania,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,0.001,0.0,0.0,0.0,0.01
+VIC,3,Victoria,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,1.818,0.0,0.775,5.125,1.998
+WANorth,0,Western Australia North,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,26.208,6.55,29.55,36.675,10.142
+WASouth,1,Western Australia South,,,,,,ffdi_ndays_exceeding_50_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,18.66,4.525,19.775,30.05,9.497
+NSW,2,New South Wales and Australian Capital Territory,1.5,0.0,0.95,4.0,1.66,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+NT,6,Northern Territory,3.17,0.0,2.85,8.125,3.305,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+QLDNorth,7,Queensland North,0.515,0.0,0.125,1.65,0.802,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+QLDSouth,8,Queensland South,2.992,0.0,1.8,7.475,2.962,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+SA,4,South Australia,5.461,1.175,5.925,8.15,2.528,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+TAS,5,Tasmania,0.0,0.0,0.0,0.0,0.0,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+VIC,3,Victoria,0.428,0.0,0.1,1.675,0.751,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+WANorth,0,Western Australia North,9.673,0.425,9.025,18.725,6.802,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+WASouth,1,Western Australia South,7.021,1.175,6.8,13.375,4.401,ffdi_ndays_exceeding_75_allstats_gwl2_abschangeGWL12_ncra_reg.csv,,,,,,,,,,
+NSW,2,New South Wales and Australian Capital Territory,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,3.013,0.0,2.475,7.025,2.732,,,,,
+NT,6,Northern Territory,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,9.204,0.25,10.55,17.9,6.82,,,,,
+QLDNorth,7,Queensland North,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,1.728,0.0,0.325,5.1,2.434,,,,,
+QLDSouth,8,Queensland South,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,6.398,0.025,4.725,15.0,5.858,,,,,
+SA,4,South Australia,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,10.258,2.525,11.45,15.325,4.544,,,,,
+TAS,5,Tasmania,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,0.0,0.0,0.0,0.0,0.0,,,,,
+VIC,3,Victoria,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,0.862,0.0,0.45,2.5,1.056,,,,,
+WANorth,0,Western Australia North,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,16.47,1.2,19.803,28.075,10.064,,,,,
+WASouth,1,Western Australia South,,,,,,ffdi_ndays_exceeding_75_allstats_gwl3_abschangeGWL12_ncra_reg.csv,13.753,2.025,12.6,24.525,8.1,,,,,
+NSW,2,New South Wales and Australian Capital Territory,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,1.016,0.0,0.55,2.7,1.077
+NT,6,Northern Territory,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,2.128,0.0,2.033,4.575,1.881
+QLDNorth,7,Queensland North,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,0.251,0.0,0.05,0.9,0.498
+QLDSouth,8,Queensland South,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,1.772,0.0,1.125,4.3,1.703
+SA,4,South Australia,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,4.238,0.85,4.525,6.875,2.146
+TAS,5,Tasmania,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,0.0,0.0,0.0,0.0,0.0
+VIC,3,Victoria,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,0.256,0.0,0.075,0.85,0.4
+WANorth,0,Western Australia North,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,6.066,0.2,5.875,12.725,4.65
+WASouth,1,Western Australia South,,,,,,ffdi_ndays_exceeding_75_allstats_gwl15_abschangeGWL12_ncra_reg.csv,,,,,,5.034,0.675,5.575,8.35,2.804
