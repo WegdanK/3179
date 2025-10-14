@@ -1,0 +1,55 @@
+abbrevs,region,names,ffdi_Median_mean_gwl2,ffdi_Median_p10_gwl2,ffdi_Median_p50_gwl2,ffdi_Median_p90_gwl2,ffdi_Median_std_gwl2,ffdi_Median_mean_gwl3,ffdi_Median_p10_gwl3,ffdi_Median_p50_gwl3,ffdi_Median_p90_gwl3,ffdi_Median_std_gwl3,ffdi_Median_mean_gwl15,ffdi_Median_p10_gwl15,ffdi_Median_p50_gwl15,ffdi_Median_p90_gwl15,ffdi_Median_std_gwl15,GWL,Threshold
+NSW,2,New South Wales and Australian Capital Territory,7.578,0.0,7.775,16.95,6.374,,,,,,,,,,,2,50
+NT,6,Northern Territory,21.09,3.125,21.125,34.55,10.741,,,,,,,,,,,2,50
+QLDNorth,7,Queensland North,6.294,0.0,4.3,16.05,6.758,,,,,,,,,,,2,50
+QLDSouth,8,Queensland South,14.733,0.3,17.175,30.425,11.061,,,,,,,,,,,2,50
+SA,4,South Australia,20.36,7.325,22.125,28.3,7.774,,,,,,,,,,,2,50
+TAS,5,Tasmania,0.0,0.0,0.0,0.0,0.019,,,,,,,,,,,2,50
+VIC,3,Victoria,2.782,0.0,1.325,8.099,3.01,,,,,,,,,,,2,50
+WANorth,0,Western Australia North,34.332,9.875,37.775,46.925,12.917,,,,,,,,,,,2,50
+WASouth,1,Western Australia South,23.902,6.625,23.9,40.775,12.122,,,,,,,,,,,2,50
+NSW,2,New South Wales and Australian Capital Territory,,,,,,12.69,0.325,13.075,26.5,9.396,,,,,,3,50
+NT,6,Northern Territory,,,,,,29.484,9.375,33.825,44.4,14.061,,,,,,3,50
+QLDNorth,7,Queensland North,,,,,,11.854,0.025,8.525,26.225,10.213,,,,,,3,50
+QLDSouth,8,Queensland South,,,,,,22.104,1.4,25.475,39.95,14.184,,,,,,3,50
+SA,4,South Australia,,,,,,28.674,11.9,30.825,40.0,11.096,,,,,,3,50
+TAS,5,Tasmania,,,,,,0.004,0.0,0.0,0.0,0.025,,,,,,3,50
+VIC,3,Victoria,,,,,,4.046,0.025,2.7,11.775,4.281,,,,,,3,50
+WANorth,0,Western Australia North,,,,,,41.323,13.775,45.45,55.8,13.901,,,,,,3,50
+WASouth,1,Western Australia South,,,,,,31.736,10.225,33.425,48.3,13.912,,,,,,3,50
+NSW,2,New South Wales and Australian Capital Territory,,,,,,,,,,,5.476,0.05,5.375,11.9,4.531,1.5,50
+NT,6,Northern Territory,,,,,,,,,,,15.898,2.875,16.575,27.7,9.014,1.5,50
+QLDNorth,7,Queensland North,,,,,,,,,,,4.277,0.0,2.8,10.95,4.704,1.5,50
+QLDSouth,8,Queensland South,,,,,,,,,,,12.129,0.425,10.45,25.25,9.366,1.5,50
+SA,4,South Australia,,,,,,,,,,,15.952,5.575,17.475,22.35,6.382,1.5,50
+TAS,5,Tasmania,,,,,,,,,,,0.001,0.0,0.0,0.0,0.01,1.5,50
+VIC,3,Victoria,,,,,,,,,,,1.818,0.0,0.775,5.125,1.998,1.5,50
+WANorth,0,Western Australia North,,,,,,,,,,,26.208,6.55,29.55,36.675,10.142,1.5,50
+WASouth,1,Western Australia South,,,,,,,,,,,18.66,4.525,19.775,30.05,9.497,1.5,50
+NSW,2,New South Wales and Australian Capital Territory,1.5,0.0,0.95,4.0,1.66,,,,,,,,,,,2,75
+NT,6,Northern Territory,3.17,0.0,2.85,8.125,3.305,,,,,,,,,,,2,75
+QLDNorth,7,Queensland North,0.515,0.0,0.125,1.65,0.802,,,,,,,,,,,2,75
+QLDSouth,8,Queensland South,2.992,0.0,1.8,7.475,2.962,,,,,,,,,,,2,75
+SA,4,South Australia,5.461,1.175,5.925,8.15,2.528,,,,,,,,,,,2,75
+TAS,5,Tasmania,0.0,0.0,0.0,0.0,0.0,,,,,,,,,,,2,75
+VIC,3,Victoria,0.428,0.0,0.1,1.675,0.751,,,,,,,,,,,2,75
+WANorth,0,Western Australia North,9.673,0.425,9.025,18.725,6.802,,,,,,,,,,,2,75
+WASouth,1,Western Australia South,7.021,1.175,6.8,13.375,4.401,,,,,,,,,,,2,75
+NSW,2,New South Wales and Australian Capital Territory,,,,,,3.013,0.0,2.475,7.025,2.732,,,,,,3,75
+NT,6,Northern Territory,,,,,,9.204,0.25,10.55,17.9,6.82,,,,,,3,75
+QLDNorth,7,Queensland North,,,,,,1.728,0.0,0.325,5.1,2.434,,,,,,3,75
+QLDSouth,8,Queensland South,,,,,,6.398,0.025,4.725,15.0,5.858,,,,,,3,75
+SA,4,South Australia,,,,,,10.258,2.525,11.45,15.325,4.544,,,,,,3,75
+TAS,5,Tasmania,,,,,,0.0,0.0,0.0,0.0,0.0,,,,,,3,75
+VIC,3,Victoria,,,,,,0.862,0.0,0.45,2.5,1.056,,,,,,3,75
+WANorth,0,Western Australia North,,,,,,16.47,1.2,19.803,28.075,10.064,,,,,,3,75
+WASouth,1,Western Australia South,,,,,,13.753,2.025,12.6,24.525,8.1,,,,,,3,75
+NSW,2,New South Wales and Australian Capital Territory,,,,,,,,,,,1.016,0.0,0.55,2.7,1.077,1.5,75
+NT,6,Northern Territory,,,,,,,,,,,2.128,0.0,2.033,4.575,1.881,1.5,75
+QLDNorth,7,Queensland North,,,,,,,,,,,0.251,0.0,0.05,0.9,0.498,1.5,75
+QLDSouth,8,Queensland South,,,,,,,,,,,1.772,0.0,1.125,4.3,1.703,1.5,75
+SA,4,South Australia,,,,,,,,,,,4.238,0.85,4.525,6.875,2.146,1.5,75
+TAS,5,Tasmania,,,,,,,,,,,0.0,0.0,0.0,0.0,0.0,1.5,75
+VIC,3,Victoria,,,,,,,,,,,0.256,0.0,0.075,0.85,0.4,1.5,75
+WANorth,0,Western Australia North,,,,,,,,,,,6.066,0.2,5.875,12.725,4.65,1.5,75
+WASouth,1,Western Australia South,,,,,,,,,,,5.034,0.675,5.575,8.35,2.804,1.5,75
