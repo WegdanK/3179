@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FFDI Change in NCRA Regions</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #fafafa;
+      padding: 40px;
+      text-align: center;
+      color: #222;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 22px;
+      margin-top: 50px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    p {
+      font-size: 16px;
+      max-width: 850px;
+      margin: 0 auto 40px;
+      color: #333;
+      line-height: 1.5;
+    }
+    .chart {
+      margin: 0 auto 60px;
+      max-width: 950px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Projected Changes in Bushfire Weather Across Australia</h1>
+
+  <p>
+    This dashboard shows how many more days per year different regions in Australia are projected to experience
+    dangerous fire weather under a +2°C global warming scenario. The <b>Forest Fire Danger Index (FFDI)</b> measures
+    how severe fire weather is — values above 50 indicate high fire danger, and values above 75 indicate extreme conditions.
+    The data compares these increases with current-day averages to highlight where fire weather is worsening most.
+  </p>
+
+  <h2>1. Average Increase in Days Above FFDI Threshold by Region</h2>
+  <div id="bar-chart" class="chart"></div>
+
+  <p style="font-size:15px; color:#555; max-width:850px; margin: -30px auto 50px;">
+  <i>Note:</i> Tasmania shows little or no change in the number of days exceeding the severe or extreme fire danger thresholds.
+  This is because Tasmania’s cooler and wetter climate limits how often fire weather conditions reach high FFDI values,
+  even under a +2°C global warming scenario.
+  </p>
+
+  <h2>2. Regional Spread of Min vs Max Days Change</h2>
+  <div id="scatter-plot" class="chart"></div>
+
+  <p>
+    <b>Interpretation:</b> Western and inland regions such as <b>Western Australia</b> and <b>South Australia</b> 
+    are projected to experience the largest increases in high fire danger days — in some cases over 40 extra days per year.
+    Meanwhile, cooler southern regions such as <b>Victoria</b> and <b>Tasmania</b> show smaller increases, generally under 10 days.
+    The scatter plot reveals that regions with higher maximum changes (toward the top) are more exposed to future
+    variability and extremes in fire weather.
+  </p>
+
+  <script type="text/javascript">
+    // Bar Chart
+    const barChartSpec = {
+      $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+      data: { url: 'cleaned_ffdi_ncra_newstates.csv' },
+      transform: [
+        { filter: "datum.GWL == 2" },
+        { filter: "datum.ffdi_Median_mean != null" }
+      ],
+      width: 900,
+      height: 450,
+      mark: "bar",
+      encoding: {
+        x: {
+          field: "State",
+          type: "nominal",
+          sort: "-y",
+          axis: { title: "Region", labelAngle: -30 }
+        },
+        y: {
+          field: "ffdi_Median_mean",
+          type: "quantitative",
+          axis: { title: "Mean Change in Days" }
+        },
+        color: {
+          field: "Threshold",
+          type: "nominal",
+          title: "FFDI Threshold",
+          scale: { scheme: "reds" }
+        },
+        tooltip: [
+          { field: "State", title: "Region" },
+          { field: "ffdi_Median_mean", title: "Mean Change (Days)", format: ".2f" },
+          { field: "Threshold", title: "Threshold" }
+        ]
+      }
+    };
+
+    // Scatter Plot
+    const scatterSpec = {
+      $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+      width: 850,
+      height: 600,
+      layer: [
+        {
+          data: { url: 'cleaned_ffdi_ncra_newstates.csv' },
+          transform: [
+            { filter: "datum.GWL == 2" },
+            { filter: "datum.ffdi_Median_p10 != null && datum.ffdi_Median_p90 != null" }
+          ],
+          mark: { type: "circle", size: 250, opacity: 0.9 },
+          encoding: {
+            x: {
+              field: "ffdi_Median_p10",
+              type: "quantitative",
+              axis: { title: "Min Change in Days (p10)" }
+            },
+            y: {
+              field: "ffdi_Median_p90",
+              type: "quantitative",
+              axis: { title: "Max Change in Days (p90)" }
+            },
+            color: {
+              field: "Threshold",
+              type: "nominal",
+              title: "FFDI Thresholds",
+              scale: { scheme: "reds" }
+            },
+            tooltip: [
+              { field: "State", title: "Region" },
+              { field: "ffdi_Median_p10", title: "Min (Days)", format: ".2f" },
+              { field: "ffdi_Median_p90", title: "Max (Days)", format: ".2f" },
+              { field: "Threshold", title: "Threshold" }
+            ]
+          }
+        },
+        {
+          data: { url: "cleaned_ffdi_ncra_newstates.csv" },
+          transform: [
+            {
+              filter: "datum.State == 'Western Australia' || datum.State == 'Victoria'"
+            }
+          ],
+          mark: {
+            type: "text",
+            dy: -10,
+            fontSize: 0,
+            fontStyle: "timesnewroman"
+          },
+          encoding: {
+            x: { field: "ffdi_Median_p10", type: "quantitative" },
+            y: { field: "ffdi_Median_p90", type: "quantitative" },
+            text: { field: "State" }
+          }
+        }
+      ]
+    };
+
+    vegaEmbed("#bar-chart", barChartSpec);
+    vegaEmbed("#scatter-plot", scatterSpec);
+  </script>
+
+</body>
+</html>
