@@ -1,12 +1,367 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My first HTML Document</title>
+  <meta charset="UTF-8" />
+  <title>Projected Changes in Bushfire Weather</title>
+
+  <!-- Vega / Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    :root{
+      --bg:#fff7f7;
+      --card:#ffffff;
+      --ink:#511414;
+      --ink2:#7a1f1f;
+      --accent:#c92f2f;
+      --accent2:#aa2323;
+      --ring:rgba(0,0,0,.06);
+      --border:#f1d3d3;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 350px at 50% -120px, #ffe6e6, transparent 70%),
+        linear-gradient(180deg, var(--bg), #fff);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      line-height:1.5;
+    }
+
+    .wrap{max-width:1300px;margin:0 auto;padding:30px 18px 80px}
+
+    header{text-align:center;margin-bottom:14px}
+    h1{
+      margin:4px 0 10px;
+      font-size:clamp(30px,5.2vw,46px);
+      line-height:1.1;
+      font-weight:800;
+      color:var(--accent2);
+      letter-spacing:.3px;
+    }
+    .lead{
+      max-width:1000px;margin:0 auto 26px;color:#d88383;
+      font-size:20px;line-height:1.65
+    }
+
+    section{margin-top:22px}
+
+    .card{
+      background:var(--card);
+      border-radius:25px;
+      border:1px solid var(--border);
+      box-shadow:0 10px 26px var(--ring);
+      padding:22px 22px;
+      margin:18px 0 40px;
+      transition:box-shadow .25s ease, transform .2s ease;
+    }
+    .card:hover{box-shadow:0 14px 34px var(--ring)}
+
+    h2{
+      margin:0 0 12px;
+      font-size:clamp(20px,3.5vw,26px);
+      color:var(--accent2);
+      letter-spacing:.2px;
+    }
+
+    /* Layout for graphs + text side by side */
+    .graph-row {
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+
+    .viz {
+      flex: 1 1 60%;
+      min-height:550px;
+    }
+
+    .text-col {
+      flex: 1 1 35%;
+      color:#6b2c2c;
+      font-size:16px;
+      line-height:1.6;
+      padding-top:10px;
+    }
+
+    .note{color:#8b3a3a;font-size:15px;margin:10px 4px 0}
+    .controls{display:flex;gap:120px;flex-wrap:wrap;align-items:center;margin:0 0 12px}
+    .controls label{font-weight:700;color:var(--ink2)}
+    select{
+      padding:8px 12px;border-radius:10px;border:1px solid #e3bcbc;
+      background:#fff;color:var(--ink2);font-weight:600;outline:none;
+    }
+    select:focus{box-shadow:0 0 0 4px #ffd9d9}
+
+    #map{height:520px;width:100%;border-radius:14px;overflow:hidden}
+    .legend{
+      background:#fff;padding:10px 12px;border-radius:10px;border:1px solid #eee;
+      box-shadow:0 6px 16px var(--ring);font-size:13px;color:#444
+    }
+    .legend .row{display:flex;align-items:center;margin:4px 0}
+    .legend i{width:16px;height:16px;display:inline-block;margin-right:8px;border-radius:3px}
+
+    footer{margin-top:48px;text-align:center;color:#884040;font-size:14px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <header>
+      <h1>Projected Changes in Bushfire Weather Across Australia</h1>
+      <p class="lead">
+        The <b>Forest Fire Danger Index (FFDI)</b> indicates how often fire-danger weather occurs.
+        Values above <b>50</b> are severe; above <b>75</b> are extreme. These visuals use your dataset
+        to show where fire-danger days may increase as the climate warms.
+      </p>
+    </header>
 
-    <h1>Heading 1</h1>
-    <p> My Fisrt paragraph. </p>
+    <!-- 1. Bar -->
+    <section class="card">
+      <h2>1) Average Increase in Fire-Danger Days by Region</h2>
+      <div class="graph-row">
+        <div id="bar-chart" class="viz"></div>
+        <div class="text-col">
+          <p>This graph shows how much the number of dangerous fire-weather days could increase in each state at a +2°C warming level.
 
+Western Australia is expected to have the biggest rise, with an average of 29.12 more days at FFDI 50 (severe) and 8.35 more days at FFDI 75 (extreme). South Australia comes next, with 20.36 more days at FFDI 50 and 5.46 more days at FFDI 75. This means both states could experience much longer and more frequent periods of dangerous fire conditions compared to the rest of Australia.</p>
+        </div>
+      </div>
+      <p class="note"><i>Tasmania remains low (at zero), die to cooler, wetter conditions rarely reach severe thresholds even with warming.</i></p>
+    </section>
+
+    <!-- 2. Scatter -->
+    <section class="card">
+      <h2>2) Minimum vs Maximum Change</h2>
+      <div class="graph-row">
+        <div id="scatter-plot" class="viz"></div>
+        <div class="text-col">
+          <p>This graph compares the smallest and largest projected increases in fire-danger days for each state at a +2°C warming level.
+
+Western Australia at FFDI 50 stands out as an outlier, showing a wide range from 8.25 additional days (min) to 43.85 days (max) — much higher and more variable than any other state. At FFDI 75, Western Australia still shows notable variability, ranging from 0.8 to 16.05 days. South Australia also records large differences between its minimum and maximum increases, suggesting more unpredictable and extreme fire seasons. States clustered near the bottom and left show smaller, more stable increases in fire-danger days.</p>
+        </div>
+      </div>
+      <p class="note">Each dot is a state. Right = larger minimum increase (p10). Higher = larger maximum increase (p90).
+        WA and SA stand out for bigger and more variable changes.</p>
+    </section>
+
+    <!-- 3. Box -->
+    <section class="card">
+      <h2>3) Spread Within a State (Box & Whisker)</h2>
+      <div class="graph-row">
+        <div id="box-plot" class="viz"></div>
+        <div class="text-col">
+          <p>This graph shows how much fire-danger days vary within each state at the FFDI 50 (severe) level. It highlights the range of projected increases rather than comparing states directly.
+
+In Western Australia, the median increase is 8.25 days, with most results falling between 6.9 and 10.1 days. This shows a wide spread, meaning some regions are expected to experience much larger increases in severe fire-weather days than others.
+
+In contrast, Queensland has a much narrower range, with a median of only 0.21 days and values between 0.15 and 0.71 days. This suggests that severe fire-weather conditions are expected to rise only slightly and remain fairly consistent across the state.
+
+Overall, Western Australia shows far greater variability within the state, while Queensland’s changes are smaller and more uniform.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Map -->
+    <section class="card">
+      <h2>4) Regional Fire Danger on the Map</h2>
+      <div class="controls">
+        <label for="gwl">Warming level:</label>
+        <select id="gwl">
+          <option value="1.5">+1.5°C</option>
+          <option value="2" selected>+2°C</option>
+          <option value="3">+3°C</option>
+        </select>
+
+        <label for="threshold">FFDI threshold:</label>
+        <select id="threshold">
+          <option value="50" selected>50 (Severe)</option>
+          <option value="75">75 (Extreme)</option>
+        </select>
+      </div>
+      <div id="map"></div>
+      <p class="note" style="margin-top:16px;text-align:center;">This map shows how the number of fire-danger days is expected to change across Australia under different global warming levels (1.5°C, 2°C, and 3°C) and FFDI thresholds (50 = severe, 75 = extreme). The colours represent how much the number of dangerous fire-weather days is projected to increase — lighter shades show smaller changes, while darker reds indicate much larger increases.
+
+At +2°C and FFDI 50, Western Australia records the highest projected increase, with a median mean of 29.12 days, suggesting a major rise in the frequency of severe fire-weather. In contrast, Victoria shows a smaller increase of 2.78 days, reflecting its cooler and wetter climate, which keeps severe conditions less frequent.
+
+As you adjust the warming level, the map darkens progressively — moving from pale orange at +1.5°C to deep red at +3°C — showing how the intensity and duration of fire-danger conditions grow with each additional degree of warming. Switching between FFDI 50 and 75 also shifts the colours, with FFDI 75 highlighting fewer but far more extreme fire-danger days across the continent.</p>
+    </section>
+
+    <footer>© 2025 Australian Climate Analysis • Data: CSIRO Climate Projections</footer>
+  </div>
+
+  <script>
+    /* ========= Shared Vega options ========= */
+    const fit = s => ({...s, view:{stroke:null}, autosize:{type:"fit", contains:"padding"}});
+    const opts = {actions:false, renderer:"canvas"};
+
+    /* ========= 1) BAR ========= */
+    const barChartSpec = fit({
+      $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+      data: { url: 'cleaned_ffdi_ncra_newstates.csv' },
+      transform: [
+        { filter: "datum.GWL == 2" },
+        { filter: "datum.ffdi_Median_mean != null" }
+      ],
+      width: 680,
+      height: 580,
+      mark: { type: "bar", cornerRadiusTopLeft: 4, cornerRadiusTopRight: 4 },
+      encoding: {
+        x: { field: "State", type: "nominal", sort:"-y", axis: { title: "Region", labelAngle: -15 } },
+        y: { field: "ffdi_Median_mean", type: "quantitative", axis: { title: "Mean change (days)" } },
+        color: { field: "Threshold", type: "nominal", title: "FFDI", scale: { scheme: "reds" } },
+        tooltip: [
+          { field: "State", title: "Region" },
+          { field: "ffdi_Median_mean", title: "Mean change (days)", format: ".2f" },
+          { field: "Threshold", title: "FFDI" }
+        ]
+      }
+    });
+
+    /* ========= 2) SCATTER ========= */
+    const scatterSpec = fit({
+      $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+      data: { url: 'cleaned_ffdi_ncra_newstates.csv' },
+      transform: [
+        { filter: "datum.GWL == 2" },
+        { filter: "datum.ffdi_Median_p10 != null && datum.ffdi_Median_p90 != null" }
+      ],
+      width: 680,
+      height: 580,
+      mark: { type: "circle", size: 250, opacity: 0.9 },
+      encoding: {
+        x: { field: "ffdi_Median_p10", type: "quantitative", axis: { title: "Min change (days, p10)" }, scale:{domain:[-2,10]} },
+        y: { field: "ffdi_Median_p90", type: "quantitative", axis: { title: "Max change (days, p90)" } },
+        color:{ field:"Threshold", type:"nominal", title:"FFDI", scale:{scheme:"reds"} },
+        tooltip: [
+          { field: "State", title: "Region" },
+          { field: "ffdi_Median_p10", title: "Min (days)", format: ".2f" },
+          { field: "ffdi_Median_p90", title: "Max (days)", format: ".2f" },
+          { field: "Threshold", title: "FFDI" }
+        ]
+      }
+    });
+
+    /* ========= 3) BOX ========= */
+    const boxPlotSpec = fit({
+      $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+      data: { url: 'cleaned_ffdi_ncra_newstates.csv' },
+      params: [{
+        name: "statePick",
+        value: "Western Australia",
+        bind: { input:"select", name:"Select state: ",
+                options:["New South Wales","Northern Territory","Queensland","South Australia","Tasmania","Victoria","Western Australia"] }
+      }],
+      transform: [
+        { filter: "datum.ffdi_Median_p10 != null && datum.ffdi_Median_p50 != null && datum.ffdi_Median_p90 != null" },
+        { filter: "datum.State == statePick" },
+        { filter: "datum.Threshold == 50" }
+      ],
+      mark: { type: "boxplot", size: 90 },
+      width: 680,
+      height:580,
+      encoding: {
+        x: { field: "State", type: "nominal", axis: { title: "Region" } },
+        y: { field: "ffdi_Median_p10", type: "quantitative", axis: { title: "Change in days" } },
+        color: { field: "Threshold", type: "nominal", title: "FFDI", scale: { scheme: "reds" } },
+        tooltip: [
+          { field: "State", title: "Region" },
+          { field: "ffdi_Median_p10", title: "Min (p10)", format: ".2f" },
+          { field: "ffdi_Median_p50", title: "Median (p50)", format: ".2f" },
+          { field: "ffdi_Median_p90", title: "Max (p90)", format: ".2f" }
+        ]
+      }
+    });
+
+    vegaEmbed("#bar-chart", barChartSpec, opts);
+    vegaEmbed("#scatter-plot", scatterSpec, opts);
+    vegaEmbed("#box-plot", boxPlotSpec, opts);
+
+    /* ========= 4) LEAFLET MAP ========= */
+    const ffdiData = {
+      "1.5": {
+        "50": {"New South Wales":5.476,"Northern Territory":15.898,"Queensland":8.21,"South Australia":15.952,"Tasmania":0.001,"Victoria":1.818,"Western Australia":22.43},
+        "75": {"New South Wales":1.016,"Northern Territory":2.128,"Queensland":1.01,"South Australia":4.238,"Tasmania":0,"Victoria":0.256,"Western Australia":5.05}
+      },
+      "2": {
+        "50": {"New South Wales":7.578,"Northern Territory":21.09,"Queensland":10.51,"South Australia":20.36,"Tasmania":0,"Victoria":2.782,"Western Australia":29.12},
+        "75": {"New South Wales":1.5,"Northern Territory":3.17,"Queensland":1.75,"South Australia":5.461,"Tasmania":0,"Victoria":0.428,"Western Australia":8.35}
+      },
+      "3": {
+        "50": {"New South Wales":12.69,"Northern Territory":29.484,"Queensland":16.98,"South Australia":28.674,"Tasmania":0.004,"Victoria":4.046,"Western Australia":36.53},
+        "75": {"New South Wales":3.013,"Northern Territory":9.204,"Queensland":4.06,"South Australia":10.258,"Tasmania":0,"Victoria":0.862,"Western Australia":15.11}
+      }
+    };
+
+    const map = L.map('map').setView([-25,135], 4);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{ attribution:'&copy; OpenStreetMap' }).addTo(map);
+
+    const getVal = (state)=>{
+      const gwl = document.getElementById('gwl').value;
+      const th  = document.getElementById('threshold').value;
+      return (ffdiData[gwl] && ffdiData[gwl][th] && ffdiData[gwl][th][state]) || 0;
+    };
+
+    const getColor = d =>
+      d>30 ? '#800026' :
+      d>20 ? '#BD0026' :
+      d>10 ? '#E31A1C' :
+      d>5  ? '#FC4E2A' :
+      d>0  ? '#FD8D3C' : '#FFEDA0';
+
+    const style = f => ({
+      fillColor: getColor(getVal(f.properties.STATE_NAME)),
+      weight:1, color:'#fff', dashArray:'3', opacity:1, fillOpacity:.83
+    });
+
+    let layer;
+    fetch('australia.geojson')
+      .then(r=>r.json())
+      .then(g=>{
+        layer = L.geoJSON(g,{
+          style,
+          onEachFeature:(feat,l)=>{
+            const s = feat.properties.STATE_NAME;
+            l.bindPopup(`<b>${s}</b><br>FFDI median mean: ${getVal(s)}`);
+          }
+        }).addTo(map);
+      });
+
+    function refreshMap(){
+      if(!layer) return;
+      layer.setStyle(style);
+      layer.eachLayer(l=>{
+        const s = l.feature.properties.STATE_NAME;
+        l.bindPopup(`<b>${s}</b><br>FFDI median mean: ${getVal(s)}`);
+      });
+    }
+    document.getElementById('gwl').addEventListener('change', refreshMap);
+    document.getElementById('threshold').addEventListener('change', refreshMap);
+
+    const legend = L.control({position:'bottomright'});
+    legend.onAdd = function(){
+      const div = L.DomUtil.create('div','legend');
+      div.innerHTML = '<div style="font-weight:700;margin-bottom:4px;color:#333">Change (days)</div>';
+      const grades=[0,5,10,20,30];
+      for(let i=0;i<grades.length;i++){
+        const from = grades[i], to = grades[i+1];
+        div.innerHTML += `<div class="row"><i style="background:${getColor(from+0.1)}"></i>${from}${to?'–'+to:'+'}</div>`;
+      }
+      return div;
+    };
+    legend.addTo(map);
+  </script>
 </body>
 </html>
